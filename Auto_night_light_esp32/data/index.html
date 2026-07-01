@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Night Light Dashboard</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div class="wrap">
+  <h1>Night Light Dashboard</h1>
+  <div class="subtitle">ESP32 - LDR auto brightness control</div>
+
+  <div class="card row">
+    <div>
+      <div class="label">LED status</div>
+      <div class="value">
+        <span id="statusDot" class="status-dot dot-off"></span>
+        <span id="statusText">OFF</span>
+      </div>
+    </div>
+    <div id="bulbIcon" class="bulb-icon">&#128161;</div>
+  </div>
+
+  <div class="card">
+    <div class="row">
+      <div class="label">Brightness</div>
+      <div class="value small" id="brightnessVal">0 / 255</div>
+    </div>
+    <div class="brightness-bar"><div id="brightnessFill" class="brightness-fill"></div></div>
+  </div>
+
+  <div class="card">
+    <div class="row">
+      <div class="label">Light level (raw)</div>
+      <div class="value small" id="lightLevelVal">0</div>
+    </div>
+    <div class="label" style="margin-top:14px;">Auto-on threshold</div>
+    <input type="range" id="thresholdSlider" min="0" max="4095" value="2000">
+    <div class="slider-value"><span id="thresholdVal">2000</span> / 4095</div>
+  </div>
+
+  <div class="card">
+    <div class="label" style="margin-bottom:10px;">Mode</div>
+    <div class="btn-group">
+      <button id="autoBtn" onclick="setMode('auto')">Auto</button>
+      <button id="manualBtn" onclick="setMode('manual')">Manual</button>
+    </div>
+    <div class="label" style="margin:16px 0 0;">Manual LED control</div>
+    <div class="btn-group">
+      <button id="onBtn" onclick="setLed('on')">Turn on</button>
+      <button id="offBtn" onclick="setLed('off')">Turn off</button>
+    </div>
+  </div>
+
+  <footer>MADE BY BADASZ</footer>
+</div>
+
+<script src="/script.js"></script>
+</body>
+</html>

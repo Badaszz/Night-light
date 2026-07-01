@@ -1,0 +1,65 @@
+:root {
+  --bg: #0f1117;
+  --card: #171a23;
+  --card-border: #262a36;
+  --accent: #f5b942;
+  --accent-dim: #f5b94233;
+  --text: #eef0f5;
+  --text-dim: #8a8fa3;
+  --green: #4ade80;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: -apple-system, 'Segoe UI', Roboto, sans-serif;
+  background: radial-gradient(circle at top, #1a1e29, var(--bg) 60%);
+  color: var(--text);
+  min-height: 100vh;
+  padding: 32px 16px 60px;
+}
+.wrap { max-width: 520px; margin: 0 auto; }
+h1 { font-size: 22px; font-weight: 600; text-align: center; margin: 0 0 4px; }
+.subtitle { text-align: center; color: var(--text-dim); font-size: 13px; margin-bottom: 28px; }
+.card {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 16px;
+}
+.row { display: flex; justify-content: space-between; align-items: center; }
+.label { font-size: 13px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; }
+.value { font-size: 26px; font-weight: 600; }
+.value.small { font-size: 18px; }
+
+.status-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; margin-right: 8px; }
+.dot-on  { background: var(--green); box-shadow: 0 0 8px var(--green); }
+.dot-off { background: #444; }
+
+.bulb-icon { font-size: 40px; filter: grayscale(1) brightness(0.6); transition: filter 0.3s ease; }
+.bulb-icon.lit { filter: grayscale(0) brightness(1.3) drop-shadow(0 0 12px var(--accent)); }
+
+.brightness-bar { width: 100%; height: 10px; border-radius: 6px; background: #262a36; overflow: hidden; margin-top: 10px; }
+.brightness-fill { height: 100%; background: linear-gradient(90deg, #f5b942, #ffdd8a); width: 0%; transition: width 0.4s ease; }
+
+.btn-group { display: flex; gap: 10px; margin-top: 14px; }
+button {
+  flex: 1;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid var(--card-border);
+  background: #1e222d;
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+button:hover { border-color: var(--accent); }
+button.active { background: var(--accent-dim); border-color: var(--accent); color: var(--accent); }
+button:disabled { opacity: 0.4; cursor: not-allowed; }
+
+input[type=range] { width: 100%; margin-top: 12px; accent-color: var(--accent); }
+.slider-value { text-align: right; font-size: 13px; color: var(--accent); margin-top: 4px; }
+
+footer { text-align: center; font-size: 11px; color: var(--text-dim); letter-spacing: 0.08em; margin-top: 30px; }

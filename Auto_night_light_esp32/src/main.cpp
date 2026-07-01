@@ -1,38 +1,39 @@
 #include <Arduino.h>
 #include <WiFi.h>
-#include <WebServer.h>
+#include <LittleFS.h>
+#include <ESPAsyncWebServer.h>
 
-const char* ssid = "Solomon";
-const char* password = "solomon123";
+#include "config.h"
+#include "state.h"
+#include "sensor.h"
+#include "routes.h"
 
-void connectWiFi()
-{
-    WiFi.begin(ssid, password);
-
-    while(WiFi.status() != WL_CONNECTED)
-    {
-        delay(500);
-        Serial.print(".");
-    }
-
-    Serial.println();
-    Serial.println("WiFi connected! IP address: ");
-    Serial.println(WiFi.localIP());
-}
-
-// put function declarations here:
-int myFunction(int, int);
+AsyncWebServer server(80);
 
 void setup() {
-  // put your setup code here, to run once:
-  int result = myFunction(2, 3);
+  Serial.begin(115200);
+
+  if (!LittleFS.begin(true)) {   // true = format if mount fails (first boot)
+    Serial.println("LittleFS mount failed!");
+    return;
+  }
+
+  sensorInit();
+
+  WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
+  Serial.print("Connecting to WiFi");
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(300);
+    Serial.print(".");
+  }
+  Serial.println();
+  Serial.print("Connected! Dashboard at: http://");
+  Serial.println(WiFi.localIP());
+
+  registerRoutes(server);
+  server.begin();
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-}
-
-// put function definitions here:
-int myFunction(int x, int y) {
-  return x + y;
+  sensorUpdate();
 }
