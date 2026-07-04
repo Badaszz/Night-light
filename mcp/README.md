@@ -245,3 +245,4 @@ This project is a useful starting point for:
 - home automation experiments
 - ESP32-based device control through natural language
 - lightweight MCP demonstrations that run without cloud services
+- The laptop running the model and the esp32 must be on the same network for the code to work
