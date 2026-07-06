@@ -1,5 +1,7 @@
 # Auto Night Light ESP32
 
+![ESP32 night light dashboard](../dashboard.png)
+
 This project is a modular ESP32-based night-light controller with an automatic light-sensing mode, a manual override mode, and a small web dashboard that runs directly on the device. The firmware is designed to be easy to read and extend, with separate modules for configuration, sensor handling, shared state, and HTTP routes.
 
 The ESP32 connects to Wi-Fi, serves a local website from its filesystem, and exposes a small set of HTTP endpoints that can be called directly from the browser, a script, or the MCP-based assistant in the parent project.

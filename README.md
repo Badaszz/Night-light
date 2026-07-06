@@ -1,5 +1,7 @@
 # Night Light AI IoT Project
 
+![ESP32 night light dashboard](dashboard.png)
+
 This repository contains a simple Internet of Things (IoT) project that combines an ESP32-based night light with an AI-enabled control layer. The main idea is to show how a physical device can be controlled through natural language by connecting an LLM to the ESP32 over a small tool-based interface.
 
 ## Overview
