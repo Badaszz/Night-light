@@ -7,6 +7,7 @@
 #include "state.h"
 #include "sensor.h"
 #include "routes.h"
+#include "mcp_server.h"
 
 AsyncWebServer server(80);
 
@@ -31,6 +32,7 @@ void setup() {
   Serial.println(WiFi.localIP());
 
   registerRoutes(server);
+  registerMcpRoute(server);
   server.begin();
 }
 
